@@ -1,7 +1,7 @@
 'use strict';
 
 import { HttpStatus } from "@nestjs/common";
-import { IErrorMessages } from "../interfaces/config/IErrorMessages";
+import { IErrorMessages } from "./interfaces/IErrorMessages";
 
 export const errorMessagesConfig: { [messageCode: string]: IErrorMessages } = {
     'user:create:missingInformation': {
@@ -39,5 +39,11 @@ export const errorMessagesConfig: { [messageCode: string]: IErrorMessages } = {
         httpStatus: HttpStatus.BAD_REQUEST,
         errorMessage: 'Unable to create a new user with this email.',
         userMessage: "L'adresse e-mail que vous avez fourni est déjà utilisé."
+    },
+    'auth:verifyToken:unauthorized': {
+        type: 'unauthorized',
+        httpStatus: HttpStatus.UNAUTHORIZED,
+        errorMessage: 'Unable to connect user caused by unauthorized.',
+        userMessage: "Vous n'êtes pas autorisé a vous connecter."
     }
 };

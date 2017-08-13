@@ -5,7 +5,7 @@ import * as path from "path";
 import * as SequelizeStatic from "sequelize";
 import { Sequelize } from "sequelize";
 import { databaseConfig } from "../config/dataBase";
-import { IUser, IUserInstance } from "../interfaces/model/IUser";
+import { IUser, IUserInstance } from "./interfaces/IUser";
 
 export interface SequelizeModels {
     User: SequelizeStatic.Model<IUserInstance, IUser>;

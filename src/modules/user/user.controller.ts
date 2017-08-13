@@ -2,12 +2,12 @@
 
 import { Controller, Get, Post, HttpStatus } from '@nestjs/common';
 import { Request, Response } from 'express';
-import { MessageCodeError } from "../lib/error/MessageCodeError";
-import { IUser } from "../interfaces/model/IUser";
-import { models, sequelize } from "../models/index";
+import { MessageCodeError } from "../../lib/error/MessageCodeError";
+import { IUser } from "../../models/interfaces/IUser";
+import { models, sequelize } from "../../models/index";
 
 @Controller()
-export class UsersController {
+export class UserController {
     @Get('users')
     public async index(req: Request, res: Response) {
         const users = await models.User.findAll();

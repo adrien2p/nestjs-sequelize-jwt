@@ -1,7 +1,7 @@
 'use strict';
 
 import { errorMessagesConfig } from "../../config/errorMessages";
-import { IErrorMessages } from "../../interfaces/config/IErrorMessages";
+import { IErrorMessages } from "../../config/interfaces/IErrorMessages";
 
 export class MessageCodeError extends Error {
     public messageCode: string;

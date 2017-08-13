@@ -1,7 +1,7 @@
 import * as crypto from 'crypto';
 import * as SequelizeStatic from "sequelize";
 import { DataTypes, Sequelize } from "sequelize";
-import { IUser, IUserInstance } from "../interfaces/model/IUser"
+import { IUser, IUserInstance } from "./interfaces/IUser"
 import { MessageCodeError } from "../lib/error/MessageCodeError";
 
 export default function User(sequelize: Sequelize, dataTypes: DataTypes): SequelizeStatic.Model<IUserInstance, IUser> {
