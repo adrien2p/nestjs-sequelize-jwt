@@ -40,10 +40,28 @@ export const errorMessagesConfig: { [messageCode: string]: IErrorMessages } = {
         errorMessage: 'Unable to create a new user with this email.',
         userMessage: "L'adresse e-mail que vous avez fourni est déjà utilisé."
     },
-    'auth:verifyToken:unauthorized': {
+    'user:show:missingInformation': {
+        type: 'BadRequest',
+        httpStatus: HttpStatus.BAD_REQUEST,
+        errorMessage: 'Unable to find the user caused by missing information.',
+        userMessage: "Impossible de trouver un utilisateur sans fournir d'id."
+    },
+    'user:delete:missingInformation': {
+        type: 'BadRequest',
+        httpStatus: HttpStatus.BAD_REQUEST,
+        errorMessage: 'Unable to delete the user caused by missing information.',
+        userMessage: "Impossible de supprimer un utilisateur sans fournir d'id."
+    },
+    'user:notFound': {
+        type: 'notFound',
+        httpStatus: HttpStatus.NOT_FOUND,
+        errorMessage: 'Unable to found the user with the provided information.',
+        userMessage: "Aucun utilisateur trouvé avec les informations fourni."
+    },
+    'request:unauthorized': {
         type: 'unauthorized',
         httpStatus: HttpStatus.UNAUTHORIZED,
-        errorMessage: 'Unable to connect user caused by unauthorized.',
-        userMessage: "Vous n'êtes pas autorisé a vous connecter."
+        errorMessage: 'Access unauthorized.',
+        userMessage: "Accès non autorisé."
     }
 };

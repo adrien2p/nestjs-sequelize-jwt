@@ -78,11 +78,17 @@ export default function User(sequelize: Sequelize, dataTypes: DataTypes): Sequel
                 if (!user.dataValues.email) throw new MessageCodeError('user:create:missingEmail');
                 if (!user.dataValues.password) throw new MessageCodeError('user:create:missingPassword');
             },
+            beforeCreate(user: IUserInstance, options: any): void {
+                if (!options.transaction) throw new Error('Missing transaction.');
+            },
             async afterCreate(user: IUserInstance, options: any): Promise<any> {
                 if (!options.transaction) throw new Error('Missing transaction.');
 
                 const password = crypto.createHmac('sha256', user.dataValues.password).digest('hex');
                 await user.update({ password }, { transaction: options.transaction });
+            },
+            beforeDestroy(user: IUserInstance, options: any): void {
+                if (!options.transaction) throw new Error('Missing transaction.');
             }
         }
     });
