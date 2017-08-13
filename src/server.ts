@@ -11,6 +11,7 @@ import { ApplicationModule } from './modules/app.module';
 const instance = express();
 /* Express middleware. */
 instance.use(bodyParser.json());
+instance.use(bodyParser.urlencoded({ extended: false }));
 /* End of express middleware. */
 
 const app = NestFactory.create(ApplicationModule, instance);

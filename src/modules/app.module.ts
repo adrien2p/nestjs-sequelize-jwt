@@ -1,13 +1,12 @@
 'use strict';
 
 import { Module } from '@nestjs/common';
-import { UsersController } from '../controllers/Users.controller';
+import { UserModule } from "./user.module";
 
 @Module({
-    controllers: [UsersController],
+    controllers: [],
     components: [],
-    modules: [],
+    modules: [UserModule],
     exports: []
 })
-export class ApplicationModule {
-}
+export class ApplicationModule { }
