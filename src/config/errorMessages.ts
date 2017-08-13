@@ -62,6 +62,18 @@ export const errorMessagesConfig: { [messageCode: string]: IErrorMessages } = {
         type: 'unauthorized',
         httpStatus: HttpStatus.UNAUTHORIZED,
         errorMessage: 'Access unauthorized.',
-        userMessage: "Accès non autorisé."
-    }
+        userMessage: "Accès non autoris."
+    },
+    'auth:login:missingEmail': {
+        type: 'BadRequest',
+        httpStatus: HttpStatus.BAD_REQUEST,
+        errorMessage: 'Unable to connect the user without email.',
+        userMessage: 'Veuillez indiquer votre adresse e-mail.'
+    },
+    'auth:login:missingPassword': {
+        type: 'BadRequest',
+        httpStatus: HttpStatus.BAD_REQUEST,
+        errorMessage: 'Unable to connect the user without password.',
+        userMessage: 'Veuillez indiquer votre mot de passe.'
+    },
 };

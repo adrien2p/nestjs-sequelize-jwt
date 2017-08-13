@@ -12,7 +12,9 @@ export class AuthController {
     @Post('login')
     public async login(req: Request, res: Response) {
         const body = req.body;
-        if (!body || (body && Object.keys(body).length === 0)) throw new MessageCodeError('auth:login:missingInformation');
+        if (!body) throw new MessageCodeError('auth:login:missingInformation');
+        if (!body.email) throw new MessageCodeError('auth:login:missingEmail');
+        if (!body.password) throw new MessageCodeError('auth:login:missingPassword');
 
         const token = await this.authService.sign(body);
         res.status(HttpStatus.ACCEPTED).json('Bearer ' + token);
