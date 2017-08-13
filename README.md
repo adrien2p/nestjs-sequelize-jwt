@@ -5,6 +5,7 @@
 ## What about Nest and Sequelize 
 
 https://github.com/kamilmysliwiec/nest/blob/master/Readme.md
+
 https://github.com/sequelize/sequelize 
 
 ## And what about this repo ?
@@ -31,7 +32,7 @@ To use the env variable, remove `.demo` from `.env.demo`.
 
 ### What is provided to start
 
-- `User (Model)` Wwich provide you an example to use Sequelize definition. 
+- `User (Model)` Wwich provide you an example to use Sequelize definition 
 - `UsersController` which provide you a full CRUD on the user instance model
 - `AuthController` which provide a way to authenticate a user
 - `AuthMiddleware` Which verify the token provided in the Authorization header of each request
