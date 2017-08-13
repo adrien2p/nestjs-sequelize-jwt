@@ -1,0 +1,50 @@
+{
+  "name": "nest-js-sequelize",
+  "version": "1.0.0",
+  "description": "Starter kit Nest + Sequelize",
+  "keywords": [
+    "nest",
+    "nest-js",
+    "sequelize",
+    "orm",
+    "nodejs",
+    "node",
+    "typescript"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "start": "node index.js --env=NODE_ENV",
+    "prestart:prod": "tsc",
+    "start:prod": "npm run prestart:prod && node dist/server.js",
+    "migrate": "./node_modules/.bin/ts-node migrate.ts $1"
+  },
+  "dependencies": {
+    "@nestjs/common": "^3.0.0",
+    "@nestjs/core": "^3.0.1",
+    "@nestjs/microservices": "^3.0.1",
+    "@nestjs/testing": "^3.0.0",
+    "@nestjs/websockets": "^3.0.0",
+    "@types/express": "^4.0.36",
+    "@types/geojson": "^1.0.2",
+    "@types/lodash": "^4.14.71",
+    "@types/reflect-metadata": "0.0.5",
+    "@types/sequelize": "^4.0.67",
+    "@types/validator": "^6.2.1",
+    "bluebird": "^3.5.0",
+    "body-parser": "^1.17.2",
+    "dotenv": "^4.0.0",
+    "express": "^4.15.4",
+    "pg": "^7.1.0",
+    "pg-hstore": "^2.3.2",
+    "redis": "^2.7.1",
+    "reflect-metadata": "^0.1.10",
+    "rxjs": "^5.4.2",
+    "sequelize": "^4.4.2",
+    "typescript": "^2.2.1",
+    "umzug": "^2.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^8.0.19",
+    "ts-node": "^3.3.0"
+  }
+}
