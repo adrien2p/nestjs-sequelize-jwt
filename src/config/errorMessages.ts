@@ -40,13 +40,25 @@ export const errorMessagesConfig: { [messageCode: string]: IErrorMessages } = {
         errorMessage: 'Unable to create a new user with this email.',
         userMessage: "L'adresse e-mail que vous avez fourni est déjà utilisé."
     },
-    'user:show:missingInformation': {
+    'user:show:missingId': {
         type: 'BadRequest',
         httpStatus: HttpStatus.BAD_REQUEST,
         errorMessage: 'Unable to find the user caused by missing information.',
         userMessage: "Impossible de trouver un utilisateur sans fournir d'id."
     },
-    'user:delete:missingInformation': {
+    'user:update:missingInformation': {
+        type: 'BadRequest',
+        httpStatus: HttpStatus.BAD_REQUEST,
+        errorMessage: 'Unable to update the user caused by missing information.',
+        userMessage: "Impossible de mettre à jour l'utilisateur avec des données manquantes."
+    },
+    'user:update:missingId': {
+        type: 'BadRequest',
+        httpStatus: HttpStatus.BAD_REQUEST,
+        errorMessage: 'Unable to update the user caused by missing information.',
+        userMessage: "Impossible de mettre à jour l'utilisateur avec des données manquantes."
+    },
+    'user:delete:missingId': {
         type: 'BadRequest',
         httpStatus: HttpStatus.BAD_REQUEST,
         errorMessage: 'Unable to delete the user caused by missing information.',
@@ -62,7 +74,7 @@ export const errorMessagesConfig: { [messageCode: string]: IErrorMessages } = {
         type: 'unauthorized',
         httpStatus: HttpStatus.UNAUTHORIZED,
         errorMessage: 'Access unauthorized.',
-        userMessage: "Accès non autoris."
+        userMessage: "Accès non autorisé."
     },
     'auth:login:missingEmail': {
         type: 'BadRequest',
