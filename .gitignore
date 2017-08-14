@@ -2,7 +2,8 @@
 .env
 
 #js file
-/**/*.js
+**/*.js
+**/*.js.map
 
 # dependencies
 /node_modules
@@ -22,9 +23,6 @@ npm-debug.log
 /tests
 /coverage
 /.nyc_output
-
-# dist
-/dist
 
 #Package
 package-lock.json
