@@ -12,7 +12,7 @@
   },
   "include": [
     "**/*",
-    "tests/*"
+    "tests/**/*.ts"
   ],
   "exclude": [
     "node_modules",
