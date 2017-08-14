@@ -11,10 +11,11 @@
     "sourceMap": true
   },
   "include": [
-    "src/**/*"
+    "**/*"
   ],
   "exclude": [
     "node_modules",
-    "tests"
+    "tests",
+    "assets"
   ]
 }

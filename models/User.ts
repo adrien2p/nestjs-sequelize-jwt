@@ -80,12 +80,8 @@ export default function User(sequelize: Sequelize, dataTypes: DataTypes): Sequel
             },
             beforeCreate(user: IUserInstance, options: any): void {
                 if (!options.transaction) throw new Error('Missing transaction.');
-            },
-            async afterCreate(user: IUserInstance, options: any): Promise<any> {
-                if (!options.transaction) throw new Error('Missing transaction.');
 
-                const password = crypto.createHmac('sha256', user.dataValues.password).digest('hex');
-                await user.update({ password }, { transaction: options.transaction });
+                user.dataValues.password = crypto.createHmac('sha256', user.dataValues.password).digest('hex');
             },
             beforeDestroy(user: IUserInstance, options: any): void {
                 if (!options.transaction) throw new Error('Missing transaction.');

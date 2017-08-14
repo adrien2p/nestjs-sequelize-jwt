@@ -4,7 +4,7 @@ export interface IAuthService {
     options: IJwtOptions;
 
     /**
-     * @description: Sign the user a create a new token before it insert in the response header Authorization.
+     * @description: Sign the user, create a new token before it insert in the response header Authorization.
      * @param {{email: string; password: string}} credentials
      * @return {Promise<string>}
      */
