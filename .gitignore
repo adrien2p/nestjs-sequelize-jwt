@@ -2,7 +2,7 @@
 .env
 
 #js file
-src/**/*.js
+/**/*.js
 
 # dependencies
 /node_modules
@@ -19,7 +19,7 @@ npm-debug.log
 /quick-start
 
 # tests
-/test
+/tests
 /coverage
 /.nyc_output
 
