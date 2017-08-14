@@ -5,21 +5,21 @@ import * as crypto from 'crypto';
 import * as jwt from 'jsonwebtoken';
 import { MessageCodeError } from "../../lib/error/MessageCodeError";
 import { models } from "../../models/index";
-import { IAuthService, IJwtOption } from "./interfaces/IAuthService";
+import { IAuthService, IJwtOptions } from "./interfaces/IAuthService";
 
 @Component()
 export class AuthService implements IAuthService {
-    private _options: IJwtOption = {
+    private _options: IJwtOptions = {
         algorithm: 'HS256',
         expiresIn: '2 days',
         jwtid: process.env.JWT_ID,
     };
 
-    get options(): IJwtOption {
+    get options(): IJwtOptions {
         return this._options;
     }
 
-    set options(value: IJwtOption) {
+    set options(value: IJwtOptions) {
         this._options.algorithm = value.algorithm;
     }
 

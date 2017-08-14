@@ -1,7 +1,7 @@
 'use strict';
 
 export interface IAuthService {
-    options: IJwtOption;
+    options: IJwtOptions;
 
     /**
      * @description: Sign the user a create a new token before it insert in the response header Authorization.
@@ -11,7 +11,7 @@ export interface IAuthService {
     sign(credentials: { email: string, password: string }): Promise<string>;
 }
 
-export interface IJwtOption {
+export interface IJwtOptions {
     algorithm: string;
     expiresIn: number | string;
     jwtid: string;

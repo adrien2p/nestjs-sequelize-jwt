@@ -8,15 +8,13 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "target": "es2017",
-    "sourceMap": true,
-    "allowJs": true,
-    "outDir": "./dist"
+    "sourceMap": true
   },
   "include": [
     "src/**/*"
   ],
   "exclude": [
     "node_modules",
-    "**/*.spec.ts"
+    "tests"
   ]
 }
