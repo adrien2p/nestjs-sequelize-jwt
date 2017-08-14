@@ -1,16 +1,16 @@
 ![Nest](assets/logo.png)
 
-# Nest-js-sequelize
-
-## What about Nest and Sequelize 
+## What about Nest / Sequelize / JWT  
 
 https://github.com/kamilmysliwiec/nest/blob/master/Readme.md
 
 https://github.com/sequelize/sequelize 
 
+https://jwt.io/
+
 ## And what about this repo ?
 
-This project is a starter kit wich implement the following :
+This project is a starter kit witch implement the following :
 
 - Nest.js
 - Sequelize (ORM)
