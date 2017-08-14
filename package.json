@@ -1,7 +1,7 @@
 {
-  "name": "nest-js-sequelize",
-  "version": "1.0.0",
-  "description": "Starter kit Nest + Sequelize",
+  "name": "nest-js-sequelize-jwt",
+  "version": "1.1.0",
+  "description": "Starter kit Nest + Sequelize + jwt",
   "keywords": [
     "nest",
     "nest-js",
@@ -9,7 +9,10 @@
     "orm",
     "nodejs",
     "node",
-    "typescript"
+    "typescript",
+    "jwt",
+    "jsonwebtoken",
+    "dotenv"
   ],
   "license": "MIT",
   "scripts": {
