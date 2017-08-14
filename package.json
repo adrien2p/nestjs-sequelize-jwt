@@ -18,7 +18,7 @@
   "scripts": {
     "migrate": "ts-node migrate.ts",
     "start": "ts-node server.ts --env=NODE_ENV",
-    "test": "mocha --compilers ts:ts-node/register -r tests/*.ts"
+    "test": "mocha -r ts-node/register tests/*.ts"
   },
   "dependencies": {
     "@nestjs/common": "^3.0.0",
