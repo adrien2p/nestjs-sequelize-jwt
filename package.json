@@ -2,7 +2,7 @@
   "name": "nest-js-sequelize-jwt",
   "version": "1.3.1",
   "description": "Starter kit Nest + Sequelize + jwt",
-  "main": "server.ts",
+  "main": "src/server.ts",
   "keywords": [
     "nest",
     "nest-js",
@@ -24,7 +24,7 @@
     "url": "https://github.com/adrien2p/nest-js-sequelize-jwt/issues"
   },
   "scripts": {
-    "lint": "tslint -c tslint.json -p tsconfig.json -e 'node_modules/**' -e '**/*.d.ts' -e 'tests/**' --type-check --fix '**/*.ts'",
+    "lint": "tslint -c tslint.json -p tsconfig.json -e 'node_modules/**' -e '**/*.d.ts' -e 'tests/**' --type-check --fix 'src/**/*.ts'",
     "migrate": "ts-node migrate.ts",
     "start": "ts-node src/server.ts --env=NODE_ENV",
     "test": "mocha -r ts-node/register tests/*.ts"
