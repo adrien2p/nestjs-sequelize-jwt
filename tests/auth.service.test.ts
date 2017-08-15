@@ -4,8 +4,8 @@ require('dotenv').config();
 
 import 'mocha';
 import { expect } from 'chai';
-import { models, sequelize } from "../src/models/index";
 import { fakeUser } from "./fixtures/fake.data";
+import { models, sequelize } from "../src/models/index";
 import { AuthService } from "../src/modules/auth/auth.service"
 
 describe('AuthService should', () => {
