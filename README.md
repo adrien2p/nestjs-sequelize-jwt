@@ -23,8 +23,6 @@ This project is a starter kit which implement the following :
 - To run lint and fix `npm run lint`
 - To run tests suite `npm run test`
 - Start the server `npm start`
-- To run the transpiler `npm run prestart:prod`
-- To start the prod server `npm run start:prod`
 - To run up/down migration `npm run migrate {up/down}`
 
 ### Configuration
