@@ -2,8 +2,8 @@
 
 require('dotenv').config();
 
-import { expect } from 'chai';
 import 'mocha';
+import { expect } from 'chai';
 import { models, sequelize } from "../src/models/index";
 import { fakeUser } from "./fixtures/fake.data";
 import { AuthService } from "../src/modules/auth/auth.service"
@@ -47,8 +47,8 @@ describe('AuthService should', () => {
         }
 
         expect(error).not.null;
-        expect(error.messageCode).equal('user:notFound');
         expect(error.httpStatus).equal(404);
+        expect(error.messageCode).equal('user:notFound');
         expect(error.errorMessage).equal('Unable to found the user with the provided information.');
         expect(error.message).equal('Aucun utilisateur trouvé avec les informations fourni.');
     });
