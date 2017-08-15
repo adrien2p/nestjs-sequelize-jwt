@@ -73,10 +73,10 @@ export default function User (sequelize: Sequelize, dataTypes: DataTypes): Seque
         hooks: {
             beforeValidate (user: IUserInstance, options: any): void {
                 if (!options.transaction) throw new Error('Missing transaction.');
-                if (!user.dataValues.firstName) throw new MessageCodeError('user:create:missingFirstName');
-                if (!user.dataValues.lastName) throw new MessageCodeError('user:create:missingLastName');
-                if (!user.dataValues.email) throw new MessageCodeError('user:create:missingEmail');
-                if (!user.dataValues.password) throw new MessageCodeError('user:create:missingPassword');
+                if (!user.getDataValue('firstName')) throw new MessageCodeError('user:create:missingFirstName');
+                if (!user.getDataValue('lastName')) throw new MessageCodeError('user:create:missingLastName');
+                if (!user.getDataValue('email')) throw new MessageCodeError('user:create:missingEmail');
+                if (!user.getDataValue('password')) throw new MessageCodeError('user:create:missingPassword');
             },
             beforeCreate (user: IUserInstance, options: any): void {
                 if (!options.transaction) throw new Error('Missing transaction.');

@@ -14,15 +14,15 @@
   },
   "include": [
     "migrate.ts",
-    "server.ts",
-    "config/**/*.ts",
-    "filters/**/*.ts",
-    "lib/**/*.ts",
-    "middlewares/**/*.ts",
-    "migrations/**/*.ts",
-    "models/**/*.ts",
-    "modules/**/*.ts",
-    "tests/*.ts"
+    "src/server.ts",
+    "src/config/**/*.ts",
+    "src/filters/**/*.ts",
+    "src/lib/**/*.ts",
+    "src/middlewares/**/*.ts",
+    "src/migrations/**/*.ts",
+    "src/models/**/*.ts",
+    "src/modules/**/*.ts",
+    "tests/**/*.ts"
   ],
   "exclude": [
     "node_modules",

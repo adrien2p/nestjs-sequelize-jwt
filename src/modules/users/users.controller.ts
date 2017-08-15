@@ -19,7 +19,7 @@ export class UsersController {
         if (!body || (body && Object.keys(body).length === 0)) throw new MessageCodeError('user:create:missingInformation');
 
         await sequelize.transaction(async t => {
-            await models.User.create(body, { transaction: t });
+            return await models.User.create(body, { transaction: t });
         });
 
         return res.status(HttpStatus.CREATED).send();
@@ -53,7 +53,7 @@ export class UsersController {
                 if (user.getDataValue(key) !== body[key]) newValues[key] = body[key];
             }
 
-            await user.update(newValues, { transaction: t });
+            return await user.update(newValues, { transaction: t });
         });
 
         return res.status(HttpStatus.OK).send();
@@ -66,12 +66,12 @@ export class UsersController {
 
         await
         sequelize.transaction(async t => {
-            await models.User.destroy({
+            return await models.User.destroy({
                 where: { id },
                 transaction: t
             });
         });
 
-        return res.status(HttpStatus.CREATED).send();
+        return res.status(HttpStatus.OK).send();
     }
 }
