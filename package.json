@@ -2,6 +2,7 @@
   "name": "nest-js-sequelize-jwt",
   "version": "1.2.0",
   "description": "Starter kit Nest + Sequelize + jwt",
+  "main": "server.ts",
   "keywords": [
     "nest",
     "nest-js",
@@ -14,8 +15,16 @@
     "jsonwebtoken",
     "dotenv"
   ],
+  "author": {
+    "name": "Adrien de Peretti",
+    "email": "adrien.deperetti@gmail.com"
+  },
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/adrien2p/nest-js-sequelize-jwt/issues"
+  },
   "scripts": {
+    "lint": "tslint -c tslint.json -p tsconfig.json -e 'node_modules/**' -e '**/*.d.ts' -e 'tests/**' --type-check --fix '**/*.ts'",
     "migrate": "ts-node migrate.ts",
     "start": "ts-node server.ts --env=NODE_ENV",
     "test": "mocha -r ts-node/register tests/*.ts"
@@ -35,6 +44,7 @@
     "@types/validator": "^6.2.1",
     "bluebird": "^3.5.0",
     "body-parser": "^1.17.2",
+    "codelyzer": "^3.1.2",
     "dotenv": "^4.0.0",
     "express": "^4.15.4",
     "jsonwebtoken": "^7.4.2",
@@ -53,6 +63,8 @@
     "@types/node": "^8.0.20",
     "chai": "^4.1.1",
     "mocha": "^3.5.0",
-    "ts-node": "^3.3.0"
+    "ts-node": "^3.3.0",
+    "tslint": "^5.6.0",
+    "tslint-config-standard": "^6.0.1"
   }
 }

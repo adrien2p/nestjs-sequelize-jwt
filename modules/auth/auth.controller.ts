@@ -2,15 +2,15 @@
 
 import { Controller, Post, HttpStatus } from '@nestjs/common';
 import { Request, Response } from 'express';
-import { MessageCodeError } from "../../lib/error/MessageCodeError";
-import { AuthService } from "./auth.service";
+import { MessageCodeError } from '../../lib/error/MessageCodeError';
+import { AuthService } from './auth.service';
 
 @Controller()
 export class AuthController {
-    constructor(private authService: AuthService) { }
+    constructor (private authService: AuthService) { }
 
     @Post('login')
-    public async login(req: Request, res: Response) {
+    public async login (req: Request, res: Response) {
         const body = req.body;
         if (!body) throw new MessageCodeError('auth:login:missingInformation');
         if (!body.email) throw new MessageCodeError('auth:login:missingEmail');

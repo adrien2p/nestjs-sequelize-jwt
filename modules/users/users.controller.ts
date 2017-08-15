@@ -2,31 +2,31 @@
 
 import { Controller, Get, Post, Put, Delete, HttpStatus } from '@nestjs/common';
 import { Request, Response } from 'express';
-import { MessageCodeError } from "../../lib/error/MessageCodeError";
-import { models, sequelize } from "../../models/index";
+import { MessageCodeError } from '../../lib/error/MessageCodeError';
+import { models, sequelize } from '../../models/index';
 
 @Controller()
 export class UsersController {
     @Get('users')
-    public async index(req: Request, res: Response) {
+    public async index (req: Request, res: Response) {
         const users = await models.User.findAll();
         return res.status(HttpStatus.OK).json(users);
     }
 
     @Post('users')
-    public async create(req: Request, res: Response) {
+    public async create (req: Request, res: Response) {
         const body = req.body;
         if (!body || (body && Object.keys(body).length === 0)) throw new MessageCodeError('user:create:missingInformation');
 
         await sequelize.transaction(async t => {
-            await models.User.create(body, { transaction: t })
+            await models.User.create(body, { transaction: t });
         });
 
         return res.status(HttpStatus.CREATED).send();
     }
 
     @Get('users/:id')
-    public async show(req: Request, res: Response) {
+    public async show (req: Request, res: Response) {
         const id = req.params.id;
         if (!id) throw new MessageCodeError('user:show:missingId');
 
@@ -37,7 +37,7 @@ export class UsersController {
     }
 
     @Put('users/:id')
-    public async update(req: Request, res: Response) {
+    public async update (req: Request, res: Response) {
         const id = req.params.id;
         const body = req.body;
         if (!id) throw new MessageCodeError('user:update:missingId');
@@ -60,7 +60,7 @@ export class UsersController {
     }
 
     @Delete('users/:id')
-    public async delete(req: Request, res: Response) {
+    public async delete (req: Request, res: Response) {
         const id = req.params.id;
         if (!id) throw new MessageCodeError('user:delete:missingId');
 

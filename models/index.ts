@@ -1,11 +1,11 @@
 'use strict';
 
-import * as fs from "fs";
-import * as path from "path";
-import * as SequelizeStatic from "sequelize";
-import { Sequelize } from "sequelize";
-import { databaseConfig } from "../config/dataBase";
-import { IUser, IUserInstance } from "./interfaces/IUser";
+import * as fs from 'fs';
+import * as path from 'path';
+import * as SequelizeStatic from 'sequelize';
+import { Sequelize } from 'sequelize';
+import { databaseConfig } from '../config/dataBase';
+import { IUser, IUserInstance } from './interfaces/IUser';
 
 export interface SequelizeModels {
     User: SequelizeStatic.Model<IUserInstance, IUser>;
@@ -16,33 +16,33 @@ class Database {
     private _models: SequelizeModels;
     private _sequelize: Sequelize;
 
-    constructor() {
+    constructor () {
         this._basename = path.basename(module.filename);
-        let dbConfig = databaseConfig[process.env.NODE_ENV];
+        let dbConfig = databaseConfig[process.env.NODE_ENV || 'development'];
 
         this._sequelize = new SequelizeStatic(dbConfig.database, dbConfig.username,
             dbConfig.password, dbConfig);
         this._models = ({} as any);
 
         fs.readdirSync(__dirname).filter((file: string) => {
-            return (file !== this._basename) && (file !== "interfaces");
+            return (file !== this._basename) && (file !== 'interfaces');
         }).forEach((file: string) => {
             let model = this._sequelize.import(path.join(__dirname, file));
             this._models[(model as any).name] = model;
         });
 
         Object.keys(this._models).forEach((modelName: string) => {
-            if (typeof this._models[modelName].associate === "function") {
+            if (typeof this._models[modelName].associate === 'function') {
                 this._models[modelName].associate(this._models);
             }
         });
     }
 
-    getModels() {
+    getModels () {
         return this._models;
     }
 
-    getSequelize() {
+    getSequelize () {
         return this._sequelize;
     }
 }

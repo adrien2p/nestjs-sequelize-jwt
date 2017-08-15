@@ -1,8 +1,8 @@
 'use strict';
 
 import { Module } from '@nestjs/common';
-import { MiddlewaresConsumer } from "@nestjs/common/interfaces/middlewares";
-import { AuthMiddleware } from "../../middlewares/auth.middleware";
+import { MiddlewaresConsumer } from '@nestjs/common/interfaces/middlewares';
+import { AuthMiddleware } from '../../middlewares/auth.middleware';
 import { UsersController } from './users.controller';
 
 @Module({
@@ -12,7 +12,7 @@ import { UsersController } from './users.controller';
     exports: []
 })
 export class UsersModule {
-    configure(consumer: MiddlewaresConsumer) {
+    configure (consumer: MiddlewaresConsumer) {
         consumer.apply(AuthMiddleware).forRoutes(UsersController);
     }
 }

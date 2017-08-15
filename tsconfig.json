@@ -4,18 +4,27 @@
     "target": "es2017",
     "declaration": false,
     "noImplicitAny": false,
-    "removeComments": true,
+    "removeComments": false,
+    "strictNullChecks": true,
     "noLib": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "sourceMap": true
   },
   "include": [
-    "**/*",
-    "tests/**/*.ts"
+    "migrate.ts",
+    "server.ts",
+    "config/**/*.ts",
+    "filters/**/*.ts",
+    "lib/**/*.ts",
+    "middlewares/**/*.ts",
+    "migrations/**/*.ts",
+    "models/**/*.ts",
+    "modules/**/*.ts"
   ],
   "exclude": [
     "node_modules",
-    "assets"
+    "assets",
+    "tests"
   ]
 }

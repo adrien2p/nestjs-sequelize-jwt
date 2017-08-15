@@ -1,0 +1,8 @@
+{
+  "extends": "tslint-config-standard",
+  "rules": {
+    "await-promise": false,
+    "ter-indent": [true, 4],
+    "semicolon": [true, "always"]
+  }
+}

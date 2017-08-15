@@ -1,6 +1,6 @@
 'use strict';
 
-import { HttpStatus } from "@nestjs/common";
+import { HttpStatus } from '@nestjs/common';
 
 export interface IErrorMessages {
     type: string;

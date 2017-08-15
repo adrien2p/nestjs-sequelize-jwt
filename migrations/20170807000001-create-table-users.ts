@@ -1,8 +1,8 @@
 'use strict';
 
-import { sequelize } from "../models/index";
+import { sequelize } from '../models/index';
 
-export async function up() {
+export async function up () {
     // language=PostgreSQL
     sequelize.query(`
         CREATE TABLE "users" (
@@ -21,7 +21,7 @@ export async function up() {
     console.log('*Table users created!*');
 }
 
-export async function down() {
+export async function down () {
     // language=PostgreSQL
     sequelize.query(`DROP TABLE users`);
 }

@@ -1,7 +1,7 @@
 'use strict';
 
-import { HttpStatus } from "@nestjs/common";
-import { IErrorMessages } from "./interfaces/IErrorMessages";
+import { HttpStatus } from '@nestjs/common';
+import { IErrorMessages } from './interfaces/IErrorMessages';
 
 export const errorMessagesConfig: { [messageCode: string]: IErrorMessages } = {
     'user:create:missingInformation': {
@@ -68,13 +68,13 @@ export const errorMessagesConfig: { [messageCode: string]: IErrorMessages } = {
         type: 'notFound',
         httpStatus: HttpStatus.NOT_FOUND,
         errorMessage: 'Unable to found the user with the provided information.',
-        userMessage: "Aucun utilisateur trouvé avec les informations fourni."
+        userMessage: 'Aucun utilisateur trouvé avec les informations fourni.'
     },
     'request:unauthorized': {
         type: 'unauthorized',
         httpStatus: HttpStatus.UNAUTHORIZED,
         errorMessage: 'Access unauthorized.',
-        userMessage: "Accès non autorisé."
+        userMessage: 'Accès non autorisé.'
     },
     'auth:login:missingEmail': {
         type: 'BadRequest',
@@ -87,5 +87,5 @@ export const errorMessagesConfig: { [messageCode: string]: IErrorMessages } = {
         httpStatus: HttpStatus.BAD_REQUEST,
         errorMessage: 'Unable to connect the user without password.',
         userMessage: 'Veuillez indiquer votre mot de passe.'
-    },
+    }
 };
