@@ -9,7 +9,8 @@
     "noLib": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "sourceMap": true
+    "sourceMap": true,
+    "outDir": "build"
   },
   "include": [
     "migrate.ts",
@@ -20,11 +21,11 @@
     "middlewares/**/*.ts",
     "migrations/**/*.ts",
     "models/**/*.ts",
-    "modules/**/*.ts"
+    "modules/**/*.ts",
+    "tests/*.ts"
   ],
   "exclude": [
     "node_modules",
-    "assets",
-    "tests"
+    "assets"
   ]
 }

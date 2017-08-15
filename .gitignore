@@ -16,8 +16,8 @@
 # misc
 npm-debug.log
 
-# example
-/quick-start
+# build
+/build
 
 # tests
 /coverage
