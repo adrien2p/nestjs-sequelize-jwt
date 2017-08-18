@@ -32,8 +32,11 @@ class Database {
         });
 
         Object.keys(this._models).forEach((modelName: string) => {
-            if (typeof this._models[modelName].associate === 'function') {
-                this._models[modelName].associate(this._models);
+            if (this._models[modelName].options.classMethods.hasOwnProperty('associate')) {
+                this._models[modelName].options.classMethods.associate(this._models);
+            }
+            if (this._models[modelName].options.classMethods.hasOwnProperty('loadScopes')) {
+                this._models[modelName].options.classMethods.loadScopes(this._models);
             }
         });
     }

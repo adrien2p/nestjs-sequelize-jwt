@@ -1,8 +1,10 @@
+'use strict';
+
 import * as crypto from 'crypto';
 import * as SequelizeStatic from 'sequelize';
 import { DataTypes, Sequelize } from 'sequelize';
-import { IUser, IUserInstance } from './interfaces/IUser';
 import { MessageCodeError } from '../lib/error/MessageCodeError';
+import { IUser, IUserInstance } from './interfaces/IUser';
 
 export default function User (sequelize: Sequelize, dataTypes: DataTypes): SequelizeStatic.Model<IUserInstance, IUser> {
     let User = sequelize.define<IUserInstance, IUser>('User', {
