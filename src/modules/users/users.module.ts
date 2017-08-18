@@ -1,6 +1,6 @@
 'use strict';
 
-import { Module } from '@nestjs/common';
+import { Module, RequestMethod } from '@nestjs/common';
 import { MiddlewaresConsumer } from '@nestjs/common/interfaces/middlewares';
 import { AuthMiddleware } from '../../middlewares/auth.middleware';
 import { UsersController } from './users.controller';
@@ -12,7 +12,12 @@ import { UsersController } from './users.controller';
     exports: []
 })
 export class UsersModule {
-    configure (consumer: MiddlewaresConsumer) {
-        consumer.apply(AuthMiddleware).forRoutes(UsersController);
+    configure(consumer: MiddlewaresConsumer) {
+        consumer.apply(AuthMiddleware).forRoutes(
+            { path: '/users', method: RequestMethod.GET },
+            { path: '/users/:id', method: RequestMethod.GET },
+            { path: '/users/:id', method: RequestMethod.PUT },
+            { path: '/users/:id', method: RequestMethod.DELETE }
+        );
     }
 }

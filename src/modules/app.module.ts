@@ -7,7 +7,10 @@ import { AuthModule } from './auth/auth.module';
 @Module({
     controllers: [],
     components: [],
-    modules: [UsersModule, AuthModule],
+    modules: [
+        UsersModule,
+        AuthModule
+    ],
     exports: []
 })
 export class ApplicationModule { }
