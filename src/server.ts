@@ -14,8 +14,9 @@ instance.use(bodyParser.json());
 instance.use(bodyParser.urlencoded({ extended: false }));
 /* End of express middleware. */
 
-const app = NestFactory.create(ApplicationModule, instance);
-/* App filters. */
-app.useGlobalFilters(new DispatchError());
-/* End of app filters. */
-app.listen(3000, () => console.log('Application is listening on port 3000.'));
+NestFactory.create(ApplicationModule, instance).then(app => {
+    /* App filters. */
+    app.useGlobalFilters(new DispatchError());
+    /* End of app filters. */
+    app.listen(3000, () => console.log('Application is listening on port 3000.'));
+});

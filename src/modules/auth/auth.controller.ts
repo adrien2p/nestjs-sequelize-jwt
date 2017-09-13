@@ -1,7 +1,6 @@
 'use strict';
 
-import { Controller, Post, HttpStatus } from '@nestjs/common';
-import { Request, Response } from 'express';
+import { Controller, Post, HttpStatus, Request, Response } from '@nestjs/common';
 import { MessageCodeError } from '../../lib/error/MessageCodeError';
 import { AuthService } from './auth.service';
 
@@ -10,7 +9,7 @@ export class AuthController {
     constructor (private authService: AuthService) { }
 
     @Post('login')
-    public async login (req: Request, res: Response) {
+    public async login (@Request() req, @Response() res) {
         const body = req.body;
         if (!body) throw new MessageCodeError('auth:login:missingInformation');
         if (!body.email) throw new MessageCodeError('auth:login:missingEmail');
