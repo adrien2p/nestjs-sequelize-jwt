@@ -17,7 +17,6 @@ describe('AuthService should', () => {
 
     before(async () => {
         authService = new AuthService();
-        console.log(databaseConfig);
         sequelize = new Sequelize(databaseConfig.test);
 
         /* Create a new user for the test. */
