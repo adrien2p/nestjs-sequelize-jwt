@@ -7,7 +7,7 @@ const childProcess = require('child_process');
 const Promise = require('bluebird');
 const Umzug = require('umzug');
 
-import { sequelize } from './src/models/index';
+import { sequelize } from './src/modules/common/models/index';
 
 const DB_NAME = process.env.DB_NAME;
 const DB_USER = process.env.DB_USER;

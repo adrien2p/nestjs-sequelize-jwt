@@ -10,9 +10,11 @@ export interface DatabaseConfigAttributes {
     logging: boolean | Function;
     force: boolean;
     timezone: string;
+    modelPaths: Array<string>;
 }
 
 export interface DatabaseConfig {
     development: DatabaseConfigAttributes;
     production: DatabaseConfigAttributes;
+    test: DatabaseConfigAttributes;
 }

@@ -4,7 +4,7 @@ import { Middleware, NestMiddleware } from '@nestjs/common';
 import { Request, Response, NextFunction } from 'express';
 import * as jwt from 'jsonwebtoken';
 import { MessageCodeError } from '../lib/error/MessageCodeError';
-import { models } from '../models/index';
+import { User } from '../../common/models/User';
 
 @Middleware()
 export class AuthMiddleware implements NestMiddleware {
@@ -13,7 +13,7 @@ export class AuthMiddleware implements NestMiddleware {
             if (req.headers.authorization && (req.headers.authorization as string).split(' ')[0] === 'Bearer') {
                 let token = (req.headers.authorization as string).split(' ')[1];
                 const decoded: any = jwt.verify(token, process.env.JWT_KEY || '');
-                const user = await models.User.findOne({
+                const user = await User.findOne<User>({
                     where: {
                         id: decoded.id,
                         email: decoded.email

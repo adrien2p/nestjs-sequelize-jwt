@@ -3,8 +3,9 @@
 import { Component } from '@nestjs/common';
 import * as crypto from 'crypto';
 import * as jwt from 'jsonwebtoken';
-import { MessageCodeError } from '../../lib/error/MessageCodeError';
-import { models } from '../../models/index';
+import { User } from '../common/models/User';
+import { MessageCodeError } from '../common/lib/error/MessageCodeError';
+
 import { IAuthService, IJwtOptions } from './interfaces/IAuthService';
 
 @Component()
@@ -24,7 +25,7 @@ export class AuthService implements IAuthService {
     }
 
     public async sign (credentials: { email: string, password: string }): Promise<string> {
-        const user = await models.User.findOne({
+        const user = await User.findOne<User>({
             where: {
                 email: credentials.email,
                 password: crypto.createHmac('sha256', credentials.password).digest('hex')
@@ -33,8 +34,8 @@ export class AuthService implements IAuthService {
         if (!user) throw new MessageCodeError('user:notFound');
 
         const payload = {
-            id: user.dataValues.id,
-            email: user.dataValues.email
+            id: user.id,
+            email: user.email
         };
 
         return await jwt.sign(payload, process.env.JWT_KEY || '', this._options);

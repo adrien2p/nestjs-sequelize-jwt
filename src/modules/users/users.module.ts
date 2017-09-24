@@ -2,7 +2,7 @@
 
 import { Module, RequestMethod } from '@nestjs/common';
 import { MiddlewaresConsumer } from '@nestjs/common/interfaces/middlewares';
-import { AuthMiddleware } from '../../middlewares/auth.middleware';
+import { AuthMiddleware } from '../common/middlewares/auth.middleware';
 import { UsersController } from './users.controller';
 
 @Module({
