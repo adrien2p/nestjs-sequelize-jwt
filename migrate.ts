@@ -7,7 +7,7 @@ const childProcess = require('child_process');
 const Promise = require('bluebird');
 const Umzug = require('umzug');
 
-import { sequelize } from './src/modules/common/models/index';
+import { sequelize } from './src/modules/common/config/dataBase';
 
 const DB_NAME = process.env.DB_NAME;
 const DB_USER = process.env.DB_USER;
@@ -27,7 +27,7 @@ const umzug = new Umzug({
                 throw new Error('Migration tried to use old style "done" callback. Please upgrade to "umzug" and return a promise instead.');
             }
         ],
-        path: './src/migrations',
+        path: './src/modules/common/migrations',
         pattern: /\.ts$/
     },
 
