@@ -14,9 +14,12 @@ instance.use(bodyParser.json());
 instance.use(bodyParser.urlencoded({ extended: false }));
 /* End of express middleware. */
 
-NestFactory.create(ApplicationModule, instance).then(app => {
+async function bootstrap (): Promise<any> {
+    const app = await NestFactory.create(ApplicationModule, instance);
     /* App filters. */
     app.useGlobalFilters(new DispatchError());
     /* End of app filters. */
-    app.listen(3000, () => console.log('Application is listening on port 3000.'));
-});
+    await app.listen(3000);
+}
+
+bootstrap().then(() => console.log('Application is listening on port 3000.'));

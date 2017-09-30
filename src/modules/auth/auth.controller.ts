@@ -1,7 +1,7 @@
 'use strict';
 
 import { Controller, Post, HttpStatus, Request, Response } from '@nestjs/common';
-import { MessageCodeError } from '../common/lib/error/MessageCodeError';
+import { MessageCodeError } from '../common/index';
 import { AuthService } from './auth.service';
 
 @Controller()

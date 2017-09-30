@@ -2,7 +2,7 @@
 
 import { Module, RequestMethod } from '@nestjs/common';
 import { MiddlewaresConsumer } from '@nestjs/common/interfaces/middlewares';
-import { AuthMiddleware } from '../common/middlewares/auth.middleware';
+import { AuthMiddleware } from '../common/index';
 import { UsersController } from './users.controller';
 
 @Module({
@@ -12,7 +12,7 @@ import { UsersController } from './users.controller';
     exports: []
 })
 export class UsersModule {
-    configure(consumer: MiddlewaresConsumer) {
+    configure (consumer: MiddlewaresConsumer) {
         consumer.apply(AuthMiddleware).forRoutes(
             { path: '/users', method: RequestMethod.GET },
             { path: '/users/:id', method: RequestMethod.GET },

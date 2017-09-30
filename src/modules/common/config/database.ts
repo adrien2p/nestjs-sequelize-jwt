@@ -1,10 +1,10 @@
 'use strict';
 
 import * as path from 'path';
-import { DatabaseConfig } from './interfaces/IDatabase';
+import { IDatabaseConfig } from './interfaces/IDatabase';
 import { Sequelize } from 'sequelize-typescript';
 
-export const databaseConfig: DatabaseConfig = {
+export const databaseConfig: IDatabaseConfig = {
     development: {
         username: process.env.DB_USER || '',
         password: process.env.DB_PASSWORD || '',

@@ -1,6 +1,6 @@
 'use strict';
 
-export interface DatabaseConfigAttributes {
+export interface IDatabaseConfigAttributes {
     username: string;
     password: string;
     database: string;
@@ -13,8 +13,8 @@ export interface DatabaseConfigAttributes {
     modelPaths: Array<string>;
 }
 
-export interface DatabaseConfig {
-    development: DatabaseConfigAttributes;
-    production: DatabaseConfigAttributes;
-    test: DatabaseConfigAttributes;
+export interface IDatabaseConfig {
+    development: IDatabaseConfigAttributes;
+    production: IDatabaseConfigAttributes;
+    test: IDatabaseConfigAttributes;
 }

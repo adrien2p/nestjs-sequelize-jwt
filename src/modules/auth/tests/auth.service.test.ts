@@ -4,11 +4,10 @@ require('dotenv').config();
 
 import 'mocha';
 import { expect } from 'chai';
-import { Sequelize } from "sequelize-typescript";
-import { fakeUser } from "./fixtures/fake.data";
-import { User } from '../../common/models/User';
-import { AuthService } from "../auth.service"
-import { databaseConfig } from "../../common/config/dataBase";
+import { Sequelize } from 'sequelize-typescript';
+import { fakeUser } from './fixtures/fake.data';
+import { databaseConfig, User } from '../../common/index';
+import { AuthService } from '../auth.service';
 
 describe('AuthService should', () => {
     let authService;
