@@ -26,15 +26,3 @@ This project is a starter kit which implement the following :
 
 To configure put all config file in the `./src/config/*`.
 To use the env variable, remove `.demo` from `.env.demo`.
-
-### What is provided to start
-
-- `User (Model)` Which provide you an example to use Sequelize definition 
-- `UsersController` which provide you a full CRUD on the user instance model
-- `AuthController` which provide a way to authenticate a user
-- `AuthMiddleware` Which verify the token provided in the Authorization header of each request
-- `AuthService` Which implement JWT sign method to be used easily for the login 
-- `DispatchError` which provide a way to set the header before the response is send (`DispatchError filter`)
-that catch MessageCodeError (which is a custom one, you can find it in `./lib/error`), ValidationError (Sequelize validation), HttpException, Error.
-
-And of course the `migrations` folder with an example
