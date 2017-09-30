@@ -1,12 +1,9 @@
 ![Nest](assets/logo.png)
 
-## What about Nest / Sequelize / JWT  
+### Project made with [nest](https://github.com/kamilmysliwiec/nest/blob/master/Readme.md) and use
 
-https://github.com/kamilmysliwiec/nest/blob/master/Readme.md
-
-https://github.com/sequelize/sequelize 
-
-https://jwt.io/
+- [Sequelize](https://github.com/sequelize/sequelize) 
+- [JWT](https://jwt.io/) 
 
 ## And what about this repo ?
 
