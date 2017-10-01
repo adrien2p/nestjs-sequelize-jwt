@@ -2,26 +2,40 @@
 
 require('dotenv').config();
 
-const path = require('path');
-const childProcess = require('child_process');
-const Promise = require('bluebird');
+import * as path from 'path';
+import * as childProcess from 'child_process';
+import * as Promise from 'bluebird';
+import { databaseConfig } from "./src/modules/common/config/database";
+import { Sequelize } from "sequelize-typescript";
+
 const Umzug = require('umzug');
-
-import { sequelize } from './src/modules/common/index';
-
 const DB_NAME = process.env.DB_NAME;
 const DB_USER = process.env.DB_USER;
 
+let config;
+switch (process.env.NODE_ENV) {
+    case 'prod':
+    case 'production':
+        config = databaseConfig.production;
+    case 'dev':
+    case 'development':
+        config = databaseConfig.development;
+    case 'test':
+        config = databaseConfig.test;
+    default:
+        config = databaseConfig.development;
+}
+
+const sequelize = new Sequelize(config);
+
 const umzug = new Umzug({
     storage: 'sequelize',
-    storageOptions: {
-        sequelize: sequelize
-    },
+    storageOptions: { sequelize },
 
     // see: https://github.com/sequelize/umzug/issues/17
     migrations: {
         params: [
-            sequelize.getQueryInterface(), // queryInterface
+            sequelize,
             sequelize.constructor, // DataTypes
             function () {
                 throw new Error('Migration tried to use old style "done" callback. Please upgrade to "umzug" and return a promise instead.');
@@ -132,37 +146,37 @@ let executedCmd;
 
 console.log(`${ cmd.toUpperCase() } BEGIN`);
 switch (cmd) {
-case 'status':
-    executedCmd = cmdStatus();
-    break;
+    case 'status':
+        executedCmd = cmdStatus();
+        break;
 
-case 'up':
-case 'migrate':
-    executedCmd = cmdMigrate();
-    break;
+    case 'up':
+    case 'migrate':
+        executedCmd = cmdMigrate();
+        break;
 
-case 'next':
-case 'migrate-next':
-    executedCmd = cmdMigrateNext();
-    break;
+    case 'next':
+    case 'migrate-next':
+        executedCmd = cmdMigrateNext();
+        break;
 
-case 'down':
-case 'reset':
-    executedCmd = cmdReset();
-    break;
+    case 'down':
+    case 'reset':
+        executedCmd = cmdReset();
+        break;
 
-case 'prev':
-case 'reset-prev':
-    executedCmd = cmdResetPrev();
-    break;
+    case 'prev':
+    case 'reset-prev':
+        executedCmd = cmdResetPrev();
+        break;
 
-case 'reset-hard':
-    executedCmd = cmdHardReset();
-    break;
+    case 'reset-hard':
+        executedCmd = cmdHardReset();
+        break;
 
-default:
-    console.log(`invalid cmd: ${ cmd }`);
-    process.exit(1);
+    default:
+        console.log(`invalid cmd: ${ cmd }`);
+        process.exit(1);
 }
 
 executedCmd

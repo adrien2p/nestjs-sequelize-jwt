@@ -10,7 +10,6 @@ export interface IDatabaseConfigAttributes {
     logging: boolean | Function;
     force: boolean;
     timezone: string;
-    modelPaths: Array<string>;
 }
 
 export interface IDatabaseConfig {

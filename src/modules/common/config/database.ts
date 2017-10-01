@@ -1,8 +1,6 @@
 'use strict';
 
-import * as path from 'path';
 import { IDatabaseConfig } from './interfaces/IDatabase';
-import { Sequelize } from 'sequelize-typescript';
 
 export const databaseConfig: IDatabaseConfig = {
     development: {
@@ -14,10 +12,7 @@ export const databaseConfig: IDatabaseConfig = {
         dialect: 'postgres',
         logging: false,
         force: true,
-        timezone: '+02:00',
-        modelPaths: [
-            path.resolve(__dirname, '../models')
-        ]
+        timezone: '+02:00'
     },
     production: {
         username: process.env.DB_USER || '',
@@ -28,10 +23,7 @@ export const databaseConfig: IDatabaseConfig = {
         dialect: 'postgres',
         logging: false,
         force: true,
-        timezone: '+02:00',
-        modelPaths: [
-            path.resolve(__dirname, '../models')
-        ]
+        timezone: '+02:00'
     },
     test: {
         username: process.env.DB_USER || '',
@@ -42,14 +34,6 @@ export const databaseConfig: IDatabaseConfig = {
         dialect: 'postgres',
         logging: true,
         force: true,
-        timezone: '+02:00',
-        modelPaths: [
-            path.resolve(__dirname, '../models')
-        ]
+        timezone: '+02:00'
     }
 };
-
-const config = !process.env.NODE_ENV || process.env.NODE_ENV === 'development' ?
-    databaseConfig.development :
-    databaseConfig.production;
-export const sequelize: Sequelize = new Sequelize(config);
