@@ -6,8 +6,9 @@ import 'mocha';
 import { expect } from 'chai';
 import { Sequelize } from 'sequelize-typescript';
 import { fakeUser } from './fixtures/fake.data';
-import { databaseConfig, User } from '../../common/index';
+import { databaseConfig } from '../../common/index';
 import { AuthService } from '../auth.service';
+import { User } from "../../users/user.entity";
 
 describe('AuthService should', () => {
     let authService;
@@ -20,7 +21,7 @@ describe('AuthService should', () => {
 
         /* Create a new user for the test. */
         await sequelize.transaction(async t => {
-            return user = await User.create(fakeUser, {
+            return user = await User.create<User>(fakeUser, {
                 transaction: t,
                 returning: true
             });

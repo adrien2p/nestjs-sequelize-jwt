@@ -1,11 +1,11 @@
 'use strict';
 
-import { Component } from '@nestjs/common';
-import * as crypto from 'crypto';
 import * as jwt from 'jsonwebtoken';
-import { MessageCodeError, User } from '../common/index';
-
+import * as crypto from 'crypto';
+import { Component } from '@nestjs/common';
+import { MessageCodeError } from '../common/index';
 import { IAuthService, IJwtOptions } from './interfaces/IAuthService';
+import { User } from '../users/user.entity';
 
 @Component()
 export class AuthService implements IAuthService {

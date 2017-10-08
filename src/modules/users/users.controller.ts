@@ -6,11 +6,11 @@ import { UsersService } from './users.service';
 
 @Controller()
 export class UsersController {
-    constructor (private readonly userService: UsersService) { }
+    constructor (private readonly usersService: UsersService) { }
 
     @Get('users')
     public async index (@Response() res) {
-        const users = await this.userService.findAll();
+        const users = await this.usersService.findAll();
         return res.status(HttpStatus.OK).json(users);
     }
 
@@ -19,7 +19,7 @@ export class UsersController {
         const body = req.body;
         if (!body || (body && Object.keys(body).length === 0)) throw new MessageCodeError('user:create:missingInformation');
 
-        await this.userService.create(req.body);
+        await this.usersService.create(req.body);
         return res.status(HttpStatus.CREATED).send();
     }
 
@@ -28,7 +28,7 @@ export class UsersController {
         const id = req.params.id;
         if (!id) throw new MessageCodeError('user:show:missingId');
 
-        const user = await this.userService.findById(id);
+        const user = await this.usersService.findById(id);
         return res.status(HttpStatus.OK).json(user);
     }
 
@@ -37,7 +37,7 @@ export class UsersController {
         const id = req.params.id;
         if (!id) throw new MessageCodeError('user:update:missingId');
 
-        await this.userService.update(id, req.body);
+        await this.usersService.update(id, req.body);
         return res.status(HttpStatus.OK).send();
     }
 
@@ -46,7 +46,7 @@ export class UsersController {
         const id = req.params.id;
         if (!id) throw new MessageCodeError('user:delete:missingId');
 
-        await this.userService.delete(id);
+        await this.usersService.delete(id);
         return res.status(HttpStatus.OK).send();
     }
 }
