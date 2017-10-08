@@ -6,16 +6,16 @@ import { UsersService } from './users.service';
 
 @Controller()
 export class UsersController {
-    constructor (private readonly usersService: UsersService) { }
+    constructor(private readonly usersService: UsersService) { }
 
     @Get('users')
-    public async index (@Response() res) {
+    public async index(@Response() res) {
         const users = await this.usersService.findAll();
         return res.status(HttpStatus.OK).json(users);
     }
 
     @Post('users')
-    public async create (@Request() req, @Response() res) {
+    public async create(@Request() req, @Response() res) {
         const body = req.body;
         if (!body || (body && Object.keys(body).length === 0)) throw new MessageCodeError('user:create:missingInformation');
 
@@ -24,7 +24,7 @@ export class UsersController {
     }
 
     @Get('users/:id')
-    public async show (@Request() req, @Response() res) {
+    public async show(@Request() req, @Response() res) {
         const id = req.params.id;
         if (!id) throw new MessageCodeError('user:show:missingId');
 
@@ -33,7 +33,7 @@ export class UsersController {
     }
 
     @Put('users/:id')
-    public async update (@Request() req, @Response() res) {
+    public async update(@Request() req, @Response() res) {
         const id = req.params.id;
         if (!id) throw new MessageCodeError('user:update:missingId');
 
@@ -42,7 +42,7 @@ export class UsersController {
     }
 
     @Delete('users/:id')
-    public async delete (@Request() req, @Response() res) {
+    public async delete(@Request() req, @Response() res) {
         const id = req.params.id;
         if (!id) throw new MessageCodeError('user:delete:missingId');
 

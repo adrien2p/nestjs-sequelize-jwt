@@ -8,7 +8,7 @@ export interface IAuthService {
      * @param {email: string; password: string} credentials
      * @return {Promise<string>}
      */
-    sign (credentials: { email: string, password: string }): Promise<string>;
+    sign(credentials: { email: string, password: string }): Promise<string>;
 }
 
 export interface IJwtOptions {

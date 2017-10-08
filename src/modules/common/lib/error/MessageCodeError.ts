@@ -8,7 +8,7 @@ export class MessageCodeError extends Error {
     public httpStatus: number;
     public errorMessage: string;
 
-    constructor (messageCode: string) {
+    constructor(messageCode: string) {
         super();
 
         const errorMessageConfig = this.getMessageFromMessageCode(messageCode);
@@ -27,7 +27,7 @@ export class MessageCodeError extends Error {
      * @param {string} messageCode
      * @return {IErrorMessages}
      */
-    private getMessageFromMessageCode (messageCode: string): IErrorMessages {
+    private getMessageFromMessageCode(messageCode: string): IErrorMessages {
         let errorMessageConfig: IErrorMessages | undefined;
         Object.keys(errorMessagesConfig).some(key => {
             if (key === messageCode) {

@@ -14,7 +14,7 @@ instance.use(bodyParser.json());
 instance.use(bodyParser.urlencoded({ extended: false }));
 /* End of express middleware. */
 
-async function bootstrap (): Promise<any> {
+async function bootstrap(): Promise<any> {
     const app = await NestFactory.create(ApplicationModule, instance);
     /* App filters. */
     app.useGlobalFilters(new DispatchError());

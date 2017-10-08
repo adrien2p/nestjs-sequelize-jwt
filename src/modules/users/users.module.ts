@@ -13,16 +13,16 @@ import { usersProvider } from './users.provider';
     controllers: [UsersController],
     components: [
         UsersService,
-        usersProvider
-    ]
+        usersProvider,
+    ],
 })
 export class UsersModule {
-    configure (consumer: MiddlewaresConsumer) {
+    public configure(consumer: MiddlewaresConsumer) {
         consumer.apply(AuthMiddleware).forRoutes(
             { path: '/users', method: RequestMethod.GET },
             { path: '/users/:id', method: RequestMethod.GET },
             { path: '/users/:id', method: RequestMethod.PUT },
-            { path: '/users/:id', method: RequestMethod.DELETE }
+            { path: '/users/:id', method: RequestMethod.DELETE },
         );
     }
 }

@@ -2,8 +2,15 @@
 
 import * as crypto from 'crypto';
 import {
-    Table, Column, Model, DataType,
-    CreatedAt, UpdatedAt, DeletedAt, BeforeValidate, BeforeCreate
+    Table,
+    Column,
+    Model,
+    DataType,
+    CreatedAt,
+    UpdatedAt,
+    DeletedAt,
+    BeforeValidate,
+    BeforeCreate,
 } from 'sequelize-typescript';
 import { IDefineOptions } from 'sequelize-typescript/lib/interfaces/IDefineOptions';
 import { MessageCodeError } from '../common/lib/error/MessageCodeError';
@@ -17,21 +24,21 @@ export class User extends Model<User> {
         allowNull: false,
         autoIncrement: true,
         unique: true,
-        primaryKey: true
+        primaryKey: true,
     })
-    id: number;
+    public id: number;
 
     @Column({
         type: DataType.CHAR(30),
-        allowNull: false
+        allowNull: false,
     })
-    firstName: string;
+    public firstName: string;
 
     @Column({
         type: DataType.CHAR(30),
-        allowNull: false
+        allowNull: false,
     })
-    lastName: string;
+    public lastName: string;
 
     @Column({
         type: DataType.CHAR(100),
@@ -45,31 +52,31 @@ export class User extends Model<User> {
                     next(error);
                 }
                 next();
-            }
-        }
+            },
+        },
     })
-    email: string;
+    public email: string;
 
     @Column({
         type: DataType.TEXT,
-        allowNull: false
+        allowNull: false,
     })
-    password: string;
+    public password: string;
 
     @Column({ type: DataType.DATE })
-    birthday: Date;
+    public birthday: Date;
 
     @CreatedAt
-    createdAt: Date;
+    public createdAt: Date;
 
     @UpdatedAt
-    updatedAt: Date;
+    public updatedAt: Date;
 
     @DeletedAt
-    deletedAt: Date;
+    public deletedAt: Date;
 
     @BeforeValidate
-    static validateData (user: User, options: any) {
+    public static validateData(user: User, options: any) {
         if (!options.transaction) throw new Error('Missing transaction.');
         if (!user.firstName) throw new MessageCodeError('user:create:missingFirstName');
         if (!user.lastName) throw new MessageCodeError('user:create:missingLastName');
@@ -78,7 +85,7 @@ export class User extends Model<User> {
     }
 
     @BeforeCreate
-    static async hashPassword (user: User, options: any) {
+    public static async hashPassword(user: User, options: any) {
         if (!options.transaction) throw new Error('Missing transaction.');
 
         user.password = crypto.createHmac('sha256', user.password).digest('hex');

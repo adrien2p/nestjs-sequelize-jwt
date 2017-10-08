@@ -23,5 +23,5 @@ export const databaseProvider = {
         sequelize.addModels([User]);
         /* await sequelize.sync(); add this if you want to sync model and DB.*/
         return sequelize;
-    }
+    },
 };

@@ -12,7 +12,7 @@ export const databaseConfig: IDatabaseConfig = {
         dialect: 'postgres',
         logging: false,
         force: true,
-        timezone: '+02:00'
+        timezone: '+02:00',
     },
     production: {
         username: process.env.DB_USER || '',
@@ -23,7 +23,7 @@ export const databaseConfig: IDatabaseConfig = {
         dialect: 'postgres',
         logging: false,
         force: true,
-        timezone: '+02:00'
+        timezone: '+02:00',
     },
     test: {
         username: process.env.DB_USER || '',
@@ -34,6 +34,6 @@ export const databaseConfig: IDatabaseConfig = {
         dialect: 'postgres',
         logging: true,
         force: true,
-        timezone: '+02:00'
-    }
+        timezone: '+02:00',
+    },
 };

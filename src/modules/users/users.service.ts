@@ -8,31 +8,31 @@ import { User } from './user.entity';
 
 @Component()
 export class UsersService implements IUserService {
-    constructor (@Inject('UsersRepository') private readonly usersRepository: typeof Model,
+    constructor(@Inject('UsersRepository') private readonly usersRepository: typeof Model,
                 @Inject('SequelizeInstance') private readonly sequelizeInstance) { }
 
-    public async findAll (): Promise<Array<User>> {
+    public async findAll(): Promise<Array<User>> {
         return await this.usersRepository.findAll<User>();
     }
 
-    public async findOne (options: Object): Promise<User | null> {
+    public async findOne(options: Object): Promise<User | null> {
         return await this.usersRepository.findOne<User>(options);
     }
 
-    public async findById (id: number): Promise<User | null> {
+    public async findById(id: number): Promise<User | null> {
         return await this.usersRepository.findById<User>(id);
     }
 
-    public async create (user: IUser): Promise<User> {
+    public async create(user: IUser): Promise<User> {
         return await this.sequelizeInstance.transaction(async transaction => {
             return await this.usersRepository.create<User>(user, {
                 returning: true,
-                transaction
+                transaction,
             });
         });
     }
 
-    public async update (id: number, newValue: IUser): Promise<User | null> {
+    public async update(id: number, newValue: IUser): Promise<User | null> {
         return await this.sequelizeInstance.transaction(async transaction => {
             let user = await this.usersRepository.findById<User>(id, { transaction });
             if (!user) throw new MessageCodeError('user:notFound');
@@ -40,16 +40,16 @@ export class UsersService implements IUserService {
             user = this._assign(user, newValue);
             return await user.save({
                 returning: true,
-                transaction
+                transaction,
             });
         });
     }
 
-    public async delete (id: number): Promise<void> {
+    public async delete(id: number): Promise<void> {
         return await this.sequelizeInstance.transaction(async transaction => {
             return await this.usersRepository.destroy({
                 where: { id },
-                transaction
+                transaction,
             });
         });
     }
@@ -62,7 +62,7 @@ export class UsersService implements IUserService {
      * @return {User}
      * @private
      */
-    private _assign (user: IUser, newValue: IUser): User {
+    private _assign(user: IUser, newValue: IUser): User {
         for (const key of Object.keys(user)) {
             if (user[key] !== newValue[key]) user[key] = newValue[key];
         }

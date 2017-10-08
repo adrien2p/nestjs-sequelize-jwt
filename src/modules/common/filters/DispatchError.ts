@@ -7,9 +7,7 @@ import { ValidationError } from 'sequelize';
 
 @Catch(MessageCodeError, ValidationError, HttpException, Error)
 export class DispatchError implements ExceptionFilter {
-    public catch (err, res) {
-        console.log(err);
-
+    public catch(err, res) {
         if (err instanceof MessageCodeError) {
             /* MessageCodeError, Set all header variable to have a context for the client in case of MessageCodeError. */
             res.setHeader('x-message-code-error', err.messageCode);
