@@ -1,11 +1,12 @@
 {
-  "name": "nest-js-sequelize-jwt",
+  "name": "nestjs-sequelize-jwt",
   "version": "3.1.0",
   "description": "Nest + Sequelize + jwt",
   "main": "src/server.ts",
   "keywords": [
     "nest",
     "nest-js",
+    "nestjs",
     "sequelize",
     "orm",
     "nodejs",
