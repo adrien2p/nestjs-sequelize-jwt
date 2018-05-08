@@ -1,7 +1,7 @@
 'use strict';
 
 import { HttpStatus } from '@nestjs/common';
-import { IErrorMessages } from './interfaces/IErrorMessages';
+import { IErrorMessages } from './interfaces/error-message.interface';
 
 export const errorMessagesConfig: { [messageCode: string]: IErrorMessages } = {
     'user:create:missingInformation': {

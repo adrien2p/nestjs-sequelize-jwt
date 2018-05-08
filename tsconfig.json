@@ -9,17 +9,16 @@
     "noLib": false,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "sourceMap": true,
-    "outDir": "build"
+    "sourceMap": false
   },
   "include": [
     "migrate.ts",
     "src/server.ts",
-    "src/modules/common/config/**/*.ts",
-    "src/modules/common/filters/**/*.ts",
-    "src/modules/common/lib/**/*.ts",
-    "src/modules/common/middlewares/**/*.ts",
-    "src/modules/common/migrations/**/*.ts",
+    "src/shared/config/**/*.ts",
+    "src/shared/filters/**/*.ts",
+    "src/shared/errors/**/*.ts",
+    "src/shared/middlewares/**/*.ts",
+    "migrations/**/*.ts",
     "src/modules/common/models/**/*.ts",
     "src/modules/**/*.ts",
     "tests/**/*.ts"

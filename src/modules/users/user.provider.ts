@@ -3,6 +3,6 @@
 import { User } from './user.entity';
 
 export const usersProvider = {
-    provide: 'UsersRepository',
+    provide: 'UserRepository',
     useValue: User,
 };

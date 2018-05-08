@@ -1,12 +1,12 @@
 'use strict';
 
 import { Module } from '@nestjs/common';
-import { UsersModule } from './users/users.module';
-import { AuthModule } from './auth/auth.module';
+import { UserModule } from './modules/users/user.module';
+import { AuthModule } from './modules/auth/auth.module';
 
 @Module({
     modules: [
-        UsersModule,
+        UserModule,
         AuthModule,
     ],
 })

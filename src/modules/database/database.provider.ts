@@ -1,7 +1,7 @@
 'use strict';
 
 import { Sequelize } from 'sequelize-typescript';
-import { databaseConfig } from '../common/index';
+import { databaseConfig } from '../../shared/index';
 import { User } from '../users/user.entity';
 
 export const databaseProvider = {

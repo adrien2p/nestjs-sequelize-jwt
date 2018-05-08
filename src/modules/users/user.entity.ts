@@ -13,7 +13,7 @@ import {
     BeforeCreate,
 } from 'sequelize-typescript';
 import { IDefineOptions } from 'sequelize-typescript/lib/interfaces/IDefineOptions';
-import { MessageCodeError } from '../common/lib/error/MessageCodeError';
+import { MessageCodeError } from '../../shared/errors/message-code-error';
 
 const tableOptions: IDefineOptions = { timestamp: true, tableName: 'users' } as IDefineOptions;
 

@@ -3,20 +3,20 @@
 import { Module, RequestMethod } from '@nestjs/common';
 import { DatabaseModule } from '../database/database.module';
 import { MiddlewaresConsumer } from '@nestjs/common/interfaces/middlewares';
-import { AuthMiddleware } from '../common/index';
-import { UsersController } from './users.controller';
-import { UsersService } from './users.service';
-import { usersProvider } from './users.provider';
+import { AuthMiddleware } from '../../shared/index';
+import { UserController } from './user.controller';
+import { UserService } from './user.service';
+import { usersProvider } from './user.provider';
 
 @Module({
     modules: [DatabaseModule],
-    controllers: [UsersController],
+    controllers: [UserController],
     components: [
-        UsersService,
+        UserService,
         usersProvider,
     ],
 })
-export class UsersModule {
+export class UserModule {
     public configure(consumer: MiddlewaresConsumer) {
         consumer.apply(AuthMiddleware).forRoutes(
             { path: '/users', method: RequestMethod.GET },

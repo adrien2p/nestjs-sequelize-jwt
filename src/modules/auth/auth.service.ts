@@ -3,8 +3,8 @@
 import * as jwt from 'jsonwebtoken';
 import * as crypto from 'crypto';
 import { Component } from '@nestjs/common';
-import { MessageCodeError } from '../common/index';
-import { IAuthService, IJwtOptions } from './interfaces/IAuthService';
+import { MessageCodeError } from '../../shared/index';
+import { IAuthService, IJwtOptions } from './interfaces/auth-service.interface';
 import { User } from '../users/user.entity';
 
 @Component()

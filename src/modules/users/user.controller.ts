@@ -1,31 +1,29 @@
 'use strict';
 
-import { Controller, Get, Post, Put, Delete, HttpStatus, Request, Response } from '@nestjs/common';
-import { MessageCodeError } from '../common/index';
-import { UsersService } from './users.service';
+import { Body, Controller, Delete, Get, HttpStatus, Param, Post, Put, Res } from '@nestjs/common';
+import { MessageCodeError } from '../../shared/index';
+import { UserService } from './user.service';
 
 @Controller()
-export class UsersController {
-    constructor(private readonly usersService: UsersService) { }
+export class UserController {
+    constructor(private readonly usersService: UserService) { }
 
     @Get('users')
-    public async index(@Response() res) {
+    public async index(@Res() res) {
         const users = await this.usersService.findAll();
         return res.status(HttpStatus.OK).json(users);
     }
 
     @Post('users')
-    public async create(@Request() req, @Response() res) {
-        const body = req.body;
+    public async create(@Body() body, @Res() res) {
         if (!body || (body && Object.keys(body).length === 0)) throw new MessageCodeError('user:create:missingInformation');
 
-        await this.usersService.create(req.body);
+        await this.usersService.create(body);
         return res.status(HttpStatus.CREATED).send();
     }
 
     @Get('users/:id')
-    public async show(@Request() req, @Response() res) {
-        const id = req.params.id;
+    public async show(@Param('id') id: number, @Res() res) {
         if (!id) throw new MessageCodeError('user:show:missingId');
 
         const user = await this.usersService.findById(id);
@@ -33,17 +31,15 @@ export class UsersController {
     }
 
     @Put('users/:id')
-    public async update(@Request() req, @Response() res) {
-        const id = req.params.id;
+    public async update(@Body() body, @Param('id') id: number, @Res() res) {
         if (!id) throw new MessageCodeError('user:update:missingId');
 
-        await this.usersService.update(id, req.body);
+        await this.usersService.update(id, body);
         return res.status(HttpStatus.OK).send();
     }
 
     @Delete('users/:id')
-    public async delete(@Request() req, @Response() res) {
-        const id = req.params.id;
+    public async delete(@Param('id') id: number, @Res() res) {
         if (!id) throw new MessageCodeError('user:delete:missingId');
 
         await this.usersService.delete(id);

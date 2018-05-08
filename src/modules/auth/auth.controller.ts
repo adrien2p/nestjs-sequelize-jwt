@@ -1,7 +1,7 @@
 'use strict';
 
-import { Controller, Post, HttpStatus, Request, Response } from '@nestjs/common';
-import { MessageCodeError } from '../common/index';
+import { Body, Controller, HttpStatus, Post, Res } from '@nestjs/common';
+import { MessageCodeError } from '../../shared/index';
 import { AuthService } from './auth.service';
 
 @Controller()
@@ -9,8 +9,7 @@ export class AuthController {
     constructor(private authService: AuthService) { }
 
     @Post('login')
-    public async login(@Request() req, @Response() res) {
-        const body = req.body;
+    public async login(@Body() body, @Res() res) {
         if (!body) throw new MessageCodeError('auth:login:missingInformation');
         if (!body.email) throw new MessageCodeError('auth:login:missingEmail');
         if (!body.password) throw new MessageCodeError('auth:login:missingPassword');

@@ -2,7 +2,7 @@
 
 import { HttpException } from '@nestjs/core';
 import { Catch, ExceptionFilter, HttpStatus } from '@nestjs/common';
-import { MessageCodeError } from '../lib/error/MessageCodeError';
+import { MessageCodeError } from '../errors/message-code-error';
 import { ValidationError } from 'sequelize';
 
 @Catch(MessageCodeError, ValidationError, HttpException, Error)

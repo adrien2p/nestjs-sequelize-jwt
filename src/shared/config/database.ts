@@ -1,6 +1,6 @@
 'use strict';
 
-import { IDatabaseConfig } from './interfaces/IDatabase';
+import { IDatabaseConfig } from './interfaces/data-base.interface';
 
 export const databaseConfig: IDatabaseConfig = {
     development: {

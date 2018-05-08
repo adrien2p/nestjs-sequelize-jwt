@@ -2,14 +2,13 @@
 
 import * as jwt from 'jsonwebtoken';
 import { Middleware, NestMiddleware } from '@nestjs/common';
-import { Request, Response, NextFunction } from 'express';
-import { MessageCodeError } from '../lib/error/MessageCodeError';
-import { User } from '../../users/user.entity';
+import { MessageCodeError } from '../errors/message-code-error';
+import { User } from '../../modules/users/user.entity';
 
 @Middleware()
 export class AuthMiddleware implements NestMiddleware {
     public resolve() {
-        return async (req: Request, res: Response, next: NextFunction) => {
+        return async (req, res, next) => {
             if (req.headers.authorization && (req.headers.authorization as string).split(' ')[0] === 'Bearer') {
                 const token = (req.headers.authorization as string).split(' ')[1];
                 const decoded: any = jwt.verify(token, process.env.JWT_KEY || '');

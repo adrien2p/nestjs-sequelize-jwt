@@ -1,11 +1,12 @@
 'use strict';
 
-require('dotenv').config();
+import * as dotenv from 'dotenv';
+dotenv.config();
 
 import * as path from 'path';
 import * as childProcess from 'child_process';
 import * as Promise from 'bluebird';
-import { databaseConfig } from "./src/modules/common/config/database";
+import { databaseConfig } from "./src/shared/config/database";
 import { Sequelize } from "sequelize-typescript";
 
 const Umzug = require('umzug');

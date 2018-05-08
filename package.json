@@ -25,48 +25,56 @@
     "url": "https://github.com/adrien2p/nest-js-sequelize-jwt/issues"
   },
   "scripts": {
-    "lint": "tslint -c tslint.json -p tsconfig.json -e 'node_modules/**' -e '**/*.d.ts'  -e 'src/**/*.test.ts' --type-check --fix 'src/**/*.ts'",
+    "lint": "tslint -c tslint.json -e 'node_modules/**' -e '**/*.d.ts'  -e 'src/**/*.test.ts' --type-check --fix 'src/**/*.ts'",
     "migrate": "ts-node migrate.ts",
     "start": "ts-node src/server.ts --env=NODE_ENV",
-    "test": "mocha -r ts-node/register src/**/tests/*.ts"
+    "test": "jest",
+    "test:cov": "jest --coverage",
+    "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
-    "@nestjs/common": "^4.0.2",
-    "@nestjs/core": "^4.0.3",
-    "@nestjs/microservices": "^4.0.2",
-    "@nestjs/testing": "^4.0.2",
-    "@nestjs/websockets": "^4.0.2",
-    "@types/express": "^4.0.37",
-    "@types/geojson": "^1.0.4",
+    "@nestjs/common": "^4.6.6",
+    "@nestjs/core": "^4.6.6",
+    "@nestjs/testing": "^4.6.6",
+    "@types/dotenv": "^4.0.3",
+    "@types/express": "^4.11.1",
+    "@types/jest": "^22.2.3",
     "@types/jsonwebtoken": "^7.2.3",
     "@types/lodash": "^4.14.76",
     "@types/reflect-metadata": "0.0.5",
     "@types/sequelize": "^4.0.75",
-    "@types/validator": "^6.3.0",
-    "bluebird": "^3.5.0",
     "body-parser": "^1.18.2",
-    "codelyzer": "^3.2.0",
     "dotenv": "^4.0.0",
-    "express": "^4.16.1",
+    "express": "^4.16.3",
+    "jest": "^22.4.3",
     "jsonwebtoken": "^7.4.3",
     "pg": "^7.3.0",
     "pg-hstore": "^2.3.2",
-    "redis": "^2.8.0",
     "reflect-metadata": "^0.1.10",
     "rxjs": "^5.4.3",
     "sequelize": "^4.13.0",
     "sequelize-typescript": "^0.5.0",
+    "ts-jest": "^22.4.5",
     "typescript": "^2.5.3",
     "umzug": "^2.0.1"
   },
   "devDependencies": {
-    "@types/chai": "^4.0.4",
-    "@types/mocha": "^2.2.43",
     "@types/node": "^8.0.31",
-    "chai": "^4.1.2",
-    "mocha": "^3.5.3",
     "ts-node": "^3.3.0",
     "tslint": "^5.7.0",
     "tslint-config-standard": "^6.0.1"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
+    "rootDir": "src",
+    "testRegex": ".spec.ts$",
+    "transform": {
+      "^.+\\.(t|j)s$": "ts-jest"
+    },
+    "coverageDirectory": "../coverage"
   }
 }
