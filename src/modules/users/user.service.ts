@@ -1,15 +1,15 @@
-'use strict';
-
-import { Component, Inject } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import { Model } from 'sequelize-typescript';
 import { MessageCodeError } from '../../shared/errors/message-code-error';
 import { IUser, IUserService } from './interfaces/index';
 import { User } from './user.entity';
 
-@Component()
+@Injectable()
 export class UserService implements IUserService {
-    constructor(@Inject('UserRepository') private readonly userRepository: typeof Model,
-                @Inject('SequelizeInstance') private readonly sequelizeInstance) { }
+    constructor(
+        @Inject('UserRepository') private readonly userRepository: typeof Model,
+        @Inject('SequelizeInstance') private readonly sequelizeInstance
+    ) {}
 
     public async findAll(): Promise<Array<User>> {
         return await this.userRepository.findAll<User>();
@@ -27,20 +27,22 @@ export class UserService implements IUserService {
         return await this.sequelizeInstance.transaction(async transaction => {
             return await this.userRepository.create<User>(user, {
                 returning: true,
-                transaction,
+                transaction
             });
         });
     }
 
     public async update(id: number, newValue: IUser): Promise<User | null> {
         return await this.sequelizeInstance.transaction(async transaction => {
-            let user = await this.userRepository.findById<User>(id, { transaction });
+            let user = await this.userRepository.findById<User>(id, {
+                transaction
+            });
             if (!user) throw new MessageCodeError('user:notFound');
 
             user = this._assign(user, newValue);
             return await user.save({
                 returning: true,
-                transaction,
+                transaction
             });
         });
     }
@@ -49,7 +51,7 @@ export class UserService implements IUserService {
         return await this.sequelizeInstance.transaction(async transaction => {
             return await this.userRepository.destroy({
                 where: { id },
-                transaction,
+                transaction
             });
         });
     }

@@ -1,5 +1,3 @@
-'use strict';
-
 export async function up(sequelize) {
     // language=PostgreSQL
     sequelize.query(`

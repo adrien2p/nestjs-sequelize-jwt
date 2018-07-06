@@ -1,12 +1,10 @@
-'use strict';
-
 import { Body, Controller, Delete, Get, HttpStatus, Param, Post, Put, Res } from '@nestjs/common';
 import { MessageCodeError } from '../../shared/index';
 import { UserService } from './user.service';
 
 @Controller()
 export class UserController {
-    constructor(private readonly usersService: UserService) { }
+    constructor(private readonly usersService: UserService) {}
 
     @Get('users')
     public async index(@Res() res) {
@@ -16,7 +14,8 @@ export class UserController {
 
     @Post('users')
     public async create(@Body() body, @Res() res) {
-        if (!body || (body && Object.keys(body).length === 0)) throw new MessageCodeError('user:create:missingInformation');
+        if (!body || (body && Object.keys(body).length === 0))
+            throw new MessageCodeError('user:create:missingInformation');
 
         await this.usersService.create(body);
         return res.status(HttpStatus.CREATED).send();

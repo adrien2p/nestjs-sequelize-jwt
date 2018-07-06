@@ -1,5 +1,3 @@
-'use strict';
-
 import { errorMessagesConfig } from '../config/error-message';
 import { IErrorMessages } from '../config/interfaces/error-message.interface';
 

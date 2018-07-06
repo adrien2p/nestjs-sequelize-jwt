@@ -1,11 +1,9 @@
-'use strict';
-
 import * as jwt from 'jsonwebtoken';
-import { Middleware, NestMiddleware } from '@nestjs/common';
+import { Injectable, NestMiddleware } from '@nestjs/common';
 import { MessageCodeError } from '../errors/message-code-error';
 import { User } from '../../modules/users/user.entity';
 
-@Middleware()
+@Injectable()
 export class AuthMiddleware implements NestMiddleware {
     public resolve() {
         return async (req, res, next) => {
@@ -15,8 +13,8 @@ export class AuthMiddleware implements NestMiddleware {
                 const user = await User.findOne<User>({
                     where: {
                         id: decoded.id,
-                        email: decoded.email,
-                    },
+                        email: decoded.email
+                    }
                 });
                 if (!user) throw new MessageCodeError('request:unauthorized');
                 next();

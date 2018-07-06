@@ -1,5 +1,3 @@
-'use strict';
-
 import { User } from '../user.entity';
 import { IUser } from '../interfaces/index';
 

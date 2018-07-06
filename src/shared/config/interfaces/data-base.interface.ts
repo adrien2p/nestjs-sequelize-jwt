@@ -1,5 +1,3 @@
-'use strict';
-
 export interface IDatabaseConfigAttributes {
     username: string;
     password: string;

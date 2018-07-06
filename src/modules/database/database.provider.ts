@@ -1,5 +1,3 @@
-'use strict';
-
 import { Sequelize } from 'sequelize-typescript';
 import { databaseConfig } from '../../shared/index';
 import { User } from '../users/user.entity';
@@ -23,5 +21,5 @@ export const databaseProvider = {
         sequelize.addModels([User]);
         /* await sequelize.sync(); add this if you want to sync model and DB.*/
         return sequelize;
-    },
+    }
 };

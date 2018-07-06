@@ -1,15 +1,18 @@
 {
   "compilerOptions": {
     "module": "commonjs",
-    "target": "es2017",
     "declaration": false,
     "noImplicitAny": false,
-    "removeComments": false,
-    "strictNullChecks": true,
+    "removeComments": true,
     "noLib": false,
-    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
     "emitDecoratorMetadata": true,
-    "sourceMap": false
+    "experimentalDecorators": true,
+    "target": "es6",
+    "sourceMap": true,
+    "allowJs": true,
+    "outDir": "./dist",
+    "baseUrl": "./src"
   },
   "include": [
     "migrate.ts",

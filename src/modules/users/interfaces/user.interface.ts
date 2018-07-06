@@ -1,5 +1,3 @@
-'use strict';
-
 export interface IUser {
     firstName: string;
     lastName: string;

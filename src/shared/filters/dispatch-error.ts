@@ -1,7 +1,4 @@
-'use strict';
-
-import { HttpException } from '@nestjs/core';
-import { Catch, ExceptionFilter, HttpStatus } from '@nestjs/common';
+import { Catch, ExceptionFilter, HttpException, HttpStatus } from '@nestjs/common';
 import { MessageCodeError } from '../errors/message-code-error';
 import { ValidationError } from 'sequelize';
 

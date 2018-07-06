@@ -1,5 +1,3 @@
-'use strict';
-
 import * as crypto from 'crypto';
 import {
     Table,
@@ -10,12 +8,15 @@ import {
     UpdatedAt,
     DeletedAt,
     BeforeValidate,
-    BeforeCreate,
+    BeforeCreate
 } from 'sequelize-typescript';
 import { IDefineOptions } from 'sequelize-typescript/lib/interfaces/IDefineOptions';
 import { MessageCodeError } from '../../shared/errors/message-code-error';
 
-const tableOptions: IDefineOptions = { timestamp: true, tableName: 'users' } as IDefineOptions;
+const tableOptions: IDefineOptions = {
+    timestamp: true,
+    tableName: 'users'
+} as IDefineOptions;
 
 @Table(tableOptions)
 export class User extends Model<User> {
@@ -24,19 +25,19 @@ export class User extends Model<User> {
         allowNull: false,
         autoIncrement: true,
         unique: true,
-        primaryKey: true,
+        primaryKey: true
     })
     public id: number;
 
     @Column({
         type: DataType.CHAR(30),
-        allowNull: false,
+        allowNull: false
     })
     public firstName: string;
 
     @Column({
         type: DataType.CHAR(30),
-        allowNull: false,
+        allowNull: false
     })
     public lastName: string;
 
@@ -46,34 +47,31 @@ export class User extends Model<User> {
         validate: {
             isEmail: true,
             isUnique: async (value: string, next: Function): Promise<any> => {
-                const isExist = await User.findOne({ where: { email: value }});
+                const isExist = await User.findOne({ where: { email: value } });
                 if (isExist) {
                     const error = new MessageCodeError('user:create:emailAlreadyExist');
                     next(error);
                 }
                 next();
-            },
-        },
+            }
+        }
     })
     public email: string;
 
     @Column({
         type: DataType.TEXT,
-        allowNull: false,
+        allowNull: false
     })
     public password: string;
 
     @Column({ type: DataType.DATE })
     public birthday: Date;
 
-    @CreatedAt
-    public createdAt: Date;
+    @CreatedAt public createdAt: Date;
 
-    @UpdatedAt
-    public updatedAt: Date;
+    @UpdatedAt public updatedAt: Date;
 
-    @DeletedAt
-    public deletedAt: Date;
+    @DeletedAt public deletedAt: Date;
 
     @BeforeValidate
     public static validateData(user: User, options: any) {

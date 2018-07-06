@@ -1,5 +1,3 @@
-'use strict';
-
 import { HttpStatus } from '@nestjs/common';
 
 export interface IErrorMessages {
