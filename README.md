@@ -17,8 +17,7 @@ This project is a starter kit which implement the following :
 
 ### How it works
  
-- To run lint and fix `npm run lint`
-- To run tests suite `npm run test`
+- To format code `npm run format`
 - Start the server `npm start`
 - To run up/down migration `npm run migrate {up/down}`
 
