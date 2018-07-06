@@ -1,6 +1,6 @@
 {
   "name": "nestjs-sequelize-jwt",
-  "version": "3.1.0",
+  "version": "5.0.0",
   "description": "Nest + Sequelize + jwt",
   "main": "src/server.ts",
   "keywords": [
