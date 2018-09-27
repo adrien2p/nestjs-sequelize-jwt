@@ -7,7 +7,7 @@ import { User } from './user.entity';
 @Injectable()
 export class UserService implements IUserService {
     constructor(
-        @Inject('UserRepository') private readonly userRepository: typeof Model,
+        @Inject('UserRepository') private readonly userRepository: typeof User,
         @Inject('SequelizeInstance') private readonly sequelizeInstance
     ) {}
 
