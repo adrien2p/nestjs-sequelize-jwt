@@ -1,5 +1,4 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { Model } from 'sequelize-typescript';
 import { MessageCodeError } from '../../shared/errors/message-code-error';
 import { IUser, IUserService } from './interfaces/index';
 import { User } from './user.entity';
