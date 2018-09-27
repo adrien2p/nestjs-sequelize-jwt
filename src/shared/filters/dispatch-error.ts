@@ -1,10 +1,12 @@
-import { Catch, ExceptionFilter, HttpException, HttpStatus } from '@nestjs/common';
+import { ArgumentsHost, Catch, ExceptionFilter, HttpException, HttpStatus } from '@nestjs/common';
 import { MessageCodeError } from '../errors/message-code-error';
 import { ValidationError } from 'sequelize';
 
 @Catch(MessageCodeError, ValidationError, HttpException, Error)
 export class DispatchError implements ExceptionFilter {
-    public catch(err, res) {
+    public catch(err: any, host: ArgumentsHost) {
+        const res = host.switchToHttp().getResponse();
+
         if (err instanceof MessageCodeError) {
             /* MessageCodeError, Set all header variable to have a context for the client in case of MessageCodeError. */
             res.setHeader('x-message-code-error', err.messageCode);
