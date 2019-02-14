@@ -2,17 +2,17 @@ import { Body, Controller, Delete, Get, HttpStatus, Param, Post, Put, Res } from
 import { MessageCodeError } from '../../shared/index';
 import { UserService } from './user.service';
 
-@Controller()
+@Controller('users')
 export class UserController {
     constructor(private readonly usersService: UserService) {}
 
-    @Get('users')
+    @Get()
     public async index(@Res() res) {
         const users = await this.usersService.findAll();
         return res.status(HttpStatus.OK).json(users);
     }
 
-    @Post('users')
+    @Post()
     public async create(@Body() body, @Res() res) {
         if (!body || (body && Object.keys(body).length === 0))
             throw new MessageCodeError('user:create:missingInformation');
@@ -21,7 +21,7 @@ export class UserController {
         return res.status(HttpStatus.CREATED).send();
     }
 
-    @Get('users/:id')
+    @Get(':id')
     public async show(@Param('id') id: number, @Res() res) {
         if (!id) throw new MessageCodeError('user:show:missingId');
 
@@ -29,7 +29,7 @@ export class UserController {
         return res.status(HttpStatus.OK).json(user);
     }
 
-    @Put('users/:id')
+    @Put(':id')
     public async update(@Body() body, @Param('id') id: number, @Res() res) {
         if (!id) throw new MessageCodeError('user:update:missingId');
 
@@ -37,7 +37,7 @@ export class UserController {
         return res.status(HttpStatus.OK).send();
     }
 
-    @Delete('users/:id')
+    @Delete(':id')
     public async delete(@Param('id') id: number, @Res() res) {
         if (!id) throw new MessageCodeError('user:delete:missingId');
 
